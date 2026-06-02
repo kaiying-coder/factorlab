@@ -111,4 +111,16 @@ fig2 = px.imshow(
 fig2.update_layout(height=560, margin=dict(t=20))
 st.plotly_chart(fig2, use_container_width=True)
 
-st.caption("FactorLab M2 · 计算与展示分离 + 缓存架构")
+
+# ---- ⑤ AI 因子分析备忘录(M3 成果展示,只读)----
+st.subheader("⑤ AI 因子分析备忘录")
+st.caption("由 LLM 基于上述回测结果生成的因子分析备忘录(示例)。线上为预生成的只读展示,不实时调用模型。")
+import os as _os2
+_memo_path = _os2.path.join(_os2.path.dirname(_os2.path.abspath(__file__)), "factor_memo.md")
+try:
+    with open(_memo_path, encoding="utf-8") as _f:
+        st.markdown(_f.read())
+except FileNotFoundError:
+    st.info("备忘录文件 factor_memo.md 未找到。")
+
+st.caption("FactorLab M1+M2+M3 · 回测 + 看板 + AI 备忘录")
